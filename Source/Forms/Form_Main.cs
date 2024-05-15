@@ -15,13 +15,15 @@ namespace GameRetailerManagement.Source.Forms
 {
     public partial class Form_Main : Form
     {
-        private Form currentSubForm = null;
-        private Form_SpecificGame currentSpecificGameForm = null;
+        private Form _currentSubForm = null;
+
+        public Form CurrentSubForm { get => _currentSubForm; set => _currentSubForm = value; }
 
         public Form_Main()
         {
             InitializeComponent();
             InitGamesList();
+            toolStripStatusLabel_Datetime.Text = DateTime.Now.ToString();
         }
 
         private EventHandler ButtonGame(int id,
@@ -35,30 +37,23 @@ namespace GameRetailerManagement.Source.Forms
         {
             return (s, e) =>
             {
-                if (currentSpecificGameForm != null && currentSpecificGameForm.Text == gameName)
-                {
-                    currentSpecificGameForm.BringToFront();
-                }
-                else
-                {
-                    currentSubForm?.Hide();
+                CurrentSubForm?.Close();
 
-                    currentSpecificGameForm = new Form_SpecificGame(
-                        gameName,
-                        panel_Main.Width,
-                        panel_Main.Height,
-                        dataImage,
-                        description,
-                        price,
-                        releaseDate,
-                        developer,
-                        publisher,
-                        ButtonEdit(id, gameName, dataImage, description, price, releaseDate, developer, publisher));
+                CurrentSubForm = new Form_SpecificGame(
+                    gameName,
+                    panel_Main.Width,
+                    panel_Main.Height,
+                    dataImage,
+                    description,
+                    price,
+                    releaseDate,
+                    developer,
+                    publisher,
+                    ButtonEdit(id, gameName, dataImage, description, price, releaseDate, developer, publisher));
 
-                    panel_Main.Controls.Add(currentSpecificGameForm);
-                    currentSubForm = currentSpecificGameForm;
-                    InitGamesList();
-                }
+                panel_Main.Controls.Add(CurrentSubForm);
+                CurrentSubForm.Show();
+                CurrentSubForm.BringToFront();
             };
         }
 
@@ -73,28 +68,22 @@ namespace GameRetailerManagement.Source.Forms
         {
             return (s, e) =>
             {
-                currentSubForm?.Hide();
-                currentSpecificGameForm?.Hide();
-
+                this.Hide();
                 Form_EditGame subForm = new Form_EditGame(id,
                     gameName,
-                    panel_Main.Width,
-                    panel_Main.Height,
                     dataImage,
                     description,
                     price,
                     releaseDate,
                     developer,
                     publisher,
-                    currentSpecificGameForm);
-
-                panel_Main.Controls.Add(subForm);
-                currentSubForm = currentSpecificGameForm;
-                InitGamesList();
+                    this);
+                subForm.Show();
+                subForm.BringToFront();
             };
         }
 
-        private void InitGamesList(string criteria = "")
+        public void InitGamesList(string criteria = "")
         {
             try
             {
@@ -119,7 +108,6 @@ namespace GameRetailerManagement.Source.Forms
                             FlatStyle = FlatStyle.Flat,
                             TextAlign = ContentAlignment.MiddleLeft,
                             Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top,
-                            Padding = new Padding(0, 0, 0, 0),
                             ForeColor = Color.DarkBlue,
                         };
                         button.FlatAppearance.BorderSize = 0;
@@ -164,27 +152,22 @@ namespace GameRetailerManagement.Source.Forms
             }
         }
 
-
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void textBox_Search_TextChanged(object sender, EventArgs e)
         {
-            toolStripStatusLabel_Datetime.Text = DateTime.Now.ToString();
+            InitGamesList(textBox_Search.Text);
+            textBox_Search.Focus();
+        }
+
+        private void button_Refresh_Click(object sender, EventArgs e)
+        {
+            textBox_Search.Text = "";
+            InitGamesList();
+            CurrentSubForm?.Close();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             toolStripStatusLabel_Datetime.Text = DateTime.Now.ToString();
-        }
-
-        private void textBox_Search_TextChanged(object sender, EventArgs e)
-        {
-            InitGamesList(textBox_Search.Text);
-        }
-
-        private void button_Refresh_Click(object sender, EventArgs e)
-        {
-            InitGamesList(textBox_Search.Text);
-            currentSubForm?.Close();
         }
     }
 }

@@ -16,31 +16,22 @@ namespace GameRetailerManagement.Source.Forms
 {
     public partial class Form_EditGame : Form
     {
-        private Form_SpecificGame _previousForm;
-        private int _id;
+        private readonly Form_Main _formMain;
+        private readonly int _id;
 
         public Form_EditGame(int id,
             string gameName,
-            int width,
-            int height,
             object dataImage,
             string description,
             string price,
             string releaseDate,
             string developer,
             string publisher,
-            Form_SpecificGame previousForm)
+            Form_Main main)
         {
             InitializeComponent();
             _id = id;
-            TopLevel = false;
-            Visible = true;
-            Width = width;
-            Height = height;
-            Location = new Point(0, 0);
-            WindowState = FormWindowState.Maximized;
-            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            Text = gameName;
+            Text = "Edit " + gameName;
             textBox_GameName.Text = gameName;
             if (dataImage != DBNull.Value)
             {
@@ -60,7 +51,7 @@ namespace GameRetailerManagement.Source.Forms
             textBox_ReleaseDate.Text = releaseDate;
             textBox_Developer.Text = developer;
             textBox_Publisher.Text = publisher;
-            _previousForm = previousForm;
+            _formMain = main;
         }
 
         private void button_Confirm_Click(object sender, EventArgs e)
@@ -95,25 +86,29 @@ namespace GameRetailerManagement.Source.Forms
             finally
             {
                 this.Close();
-                _previousForm.Show();
-                _previousForm.BringToFront();
+                _formMain.Show();
+                _formMain.BringToFront();
+                _formMain.InitGamesList();
             }
         }
 
 
         private void button_Reset_Click(object sender, EventArgs e)
         {
-            this.Close();
-            _previousForm.Show();
-            _previousForm.BringToFront();
-            _previousForm.button_Edit.PerformClick();
+            Close();
         }
 
         private void button_Back_Click(object sender, EventArgs e)
         {
-            this.Close();
-            _previousForm.Show();
-            _previousForm.BringToFront();
+            Close();
+            _formMain.Show();
+            _formMain.BringToFront();
+        }
+
+        private void Form_EditGame_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _formMain.Show();
+            _formMain.BringToFront();
         }
     }
 }

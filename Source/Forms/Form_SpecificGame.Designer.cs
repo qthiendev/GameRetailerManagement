@@ -252,7 +252,6 @@
             this.Controls.Add(this.label_GameName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox_Game);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form_SpecificGame";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

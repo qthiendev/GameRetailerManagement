@@ -128,5 +128,16 @@
   <ItemGroup>
     <None Include="Resources\424x500.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\81mftTR-ZBL._AC_UF1000,1000_QL80_.jpg" />
+    <Content Include="Resources\Among_Us_cover_art.jpg" />
+    <Content Include="Resources\Celeste_box_art_full.png" />
+    <Content Include="Resources\Doom_cover_art.jpg" />
+    <Content Include="Resources\download.jpg" />
+    <Content Include="Resources\EGS_TUNIC_ISOMETRICORPGamesLtd_S2_1200x1600-a3686b673e7a78a0e5bd33f7cecd598e.jpg" />
+    <Content Include="Resources\Grand_Theft_Auto_V.png" />
+    <Content Include="Resources\images.jpg" />
+    <Content Include="Resources\Official_cover_art_for_Bioshock_Infinite.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

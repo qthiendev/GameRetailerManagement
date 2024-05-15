@@ -36,6 +36,7 @@ namespace GameRetailerManagement.Source.Forms
             Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
             Text = gameName;
             label_GameName.Text = gameName;
+            
 
             if (dataImage != DBNull.Value)
             {
