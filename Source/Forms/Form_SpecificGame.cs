@@ -1,14 +1,8 @@
 ﻿using GameRetailerManagement.Source.Utilities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GameRetailerManagement.Source.Forms
@@ -52,7 +46,7 @@ namespace GameRetailerManagement.Source.Forms
             }
             pictureBox_Game.SizeMode = PictureBoxSizeMode.Zoom;
 
-            label_Description.Text = description;
+            textBox_Description.Text = description;
             label_Price.Text = price;
             label_ReleaseDate.Text = releaseDate;
             label_Developer.Text = developer;

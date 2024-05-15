@@ -167,9 +167,9 @@
             this.flowLayoutPanel_GamesList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanel_GamesList.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel_GamesList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flowLayoutPanel_GamesList.Location = new System.Drawing.Point(3, 32);
+            this.flowLayoutPanel_GamesList.Location = new System.Drawing.Point(6, 32);
             this.flowLayoutPanel_GamesList.Name = "flowLayoutPanel_GamesList";
-            this.flowLayoutPanel_GamesList.Size = new System.Drawing.Size(275, 530);
+            this.flowLayoutPanel_GamesList.Size = new System.Drawing.Size(272, 530);
             this.flowLayoutPanel_GamesList.TabIndex = 0;
             // 
             // panel_Tools
@@ -221,9 +221,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_Main.BackColor = System.Drawing.Color.DarkGray;
-            this.panel_Main.Location = new System.Drawing.Point(3, 3);
+            this.panel_Main.Location = new System.Drawing.Point(3, 6);
             this.panel_Main.Name = "panel_Main";
-            this.panel_Main.Size = new System.Drawing.Size(837, 559);
+            this.panel_Main.Size = new System.Drawing.Size(828, 556);
             this.panel_Main.TabIndex = 1;
             // 
             // statusStrip1
