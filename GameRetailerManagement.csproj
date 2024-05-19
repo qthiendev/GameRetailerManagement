@@ -55,16 +55,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GameRetailerDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\Form_AddGame.cs">
+    <Compile Include="Source\Forms\Bills\Form_AddBill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\Form_AddGame.Designer.cs">
+    <Compile Include="Source\Forms\Bills\Form_AddBill.Designer.cs">
+      <DependentUpon>Form_AddBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\Bills\Form_EditBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\Bills\Form_EditBill.Designer.cs">
+      <DependentUpon>Form_EditBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\Bills\Form_SpecificBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\Bills\Form_SpecificBill.Designer.cs">
+      <DependentUpon>Form_SpecificBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\Games\Form_AddGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\Games\Form_AddGame.Designer.cs">
       <DependentUpon>Form_AddGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\Form_EditGame.cs">
+    <Compile Include="Source\Forms\Games\Form_EditGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\Form_EditGame.Designer.cs">
+    <Compile Include="Source\Forms\Games\Form_EditGame.Designer.cs">
       <DependentUpon>Form_EditGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Forms\Form_Main.cs">
@@ -73,10 +91,10 @@
     <Compile Include="Source\Forms\Form_Main.Designer.cs">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\Form_SpecificGame.cs">
+    <Compile Include="Source\Forms\Games\Form_SpecificGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\Form_SpecificGame.Designer.cs">
+    <Compile Include="Source\Forms\Games\Form_SpecificGame.Designer.cs">
       <DependentUpon>Form_SpecificGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Program.cs" />
@@ -92,13 +110,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Source\Forms\Form_EditGame.resx">
+    <EmbeddedResource Include="Source\Forms\Bills\Form_EditBill.resx">
+      <DependentUpon>Form_EditBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\Bills\Form_SpecificBill.resx">
+      <DependentUpon>Form_SpecificBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\Games\Form_AddGame.resx">
+      <DependentUpon>Form_AddGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\Games\Form_EditGame.resx">
       <DependentUpon>Form_EditGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\Form_SpecificGame.resx">
+    <EmbeddedResource Include="Source\Forms\Games\Form_SpecificGame.resx">
       <DependentUpon>Form_SpecificGame.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GameRetailerDBDataSet.xsc">
@@ -139,5 +166,6 @@
     <Content Include="Resources\images.jpg" />
     <Content Include="Resources\Official_cover_art_for_Bioshock_Infinite.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

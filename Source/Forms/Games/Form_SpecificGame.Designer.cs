@@ -1,4 +1,4 @@
-﻿namespace GameRetailerManagement.Source.Forms
+﻿namespace GameRetailerManagement.Source.Forms.Games
 {
     partial class Form_SpecificGame
     {
@@ -216,7 +216,6 @@
             this.pictureBox_Game.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_Game.TabIndex = 0;
             this.pictureBox_Game.TabStop = false;
-            this.pictureBox_Game.DoubleClick += new System.EventHandler(this.pictureBox_Game_DoubleClick);
             // 
             // textBox_Description
             // 
@@ -225,10 +224,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Description.BackColor = System.Drawing.SystemColors.MenuBar;
             this.textBox_Description.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_Description.CausesValidation = false;
             this.textBox_Description.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Description.Location = new System.Drawing.Point(501, 185);
             this.textBox_Description.Multiline = true;
             this.textBox_Description.Name = "textBox_Description";
+            this.textBox_Description.ReadOnly = true;
             this.textBox_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_Description.Size = new System.Drawing.Size(672, 483);
             this.textBox_Description.TabIndex = 18;
@@ -265,7 +266,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form_SpecificGame";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form_SpecificGame_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Game)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

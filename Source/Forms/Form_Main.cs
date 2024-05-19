@@ -1,55 +1,39 @@
-﻿using GameRetailerManagement.Source.Utilities;
+﻿using GameRetailerManagement.Source.Forms.Bills;
+using GameRetailerManagement.Source.Forms.Games;
+using GameRetailerManagement.Source.Utilities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace GameRetailerManagement.Source.Forms
 {
     public partial class Form_Main : Form
     {
-        private Form _currentSubForm = null;
+        private Form _currentSubForm;
+
+        public enum SubFormType { Games, Bills }
+        private SubFormType _currentSubFormType;
 
         public Form CurrentSubForm { get => _currentSubForm; set => _currentSubForm = value; }
+        public SubFormType CurrentSubFormType { get => _currentSubFormType; set => _currentSubFormType = value; }
 
         public Form_Main()
         {
             InitializeComponent();
-            InitGamesList();
             toolStripStatusLabel_Datetime.Text = DateTime.Now.ToString();
+            CurrentSubForm = null;
         }
 
-        private EventHandler ButtonGame(int id,
-            string gameName,
-            object dataImage,
-            string description,
-            string price,
-            string releaseDate,
-            string developer,
-            string publisher)
+        private EventHandler ButtonDetail(SubFormType formType, int id)
         {
             return (s, e) =>
             {
                 CurrentSubForm?.Close();
 
-                CurrentSubForm = new Form_SpecificGame(
-                    gameName,
-                    panel_Main.Width,
-                    panel_Main.Height,
-                    dataImage,
-                    description,
-                    price,
-                    releaseDate,
-                    developer,
-                    publisher,
-                    ButtonEdit(id, gameName, dataImage, description, price, releaseDate, developer, publisher));
+                if (formType == SubFormType.Games)
+                    CurrentSubForm = new Form_SpecificGame(id, panel_Main.Width, panel_Main.Height, this);
+                else
+                    CurrentSubForm = new Form_SpecificBill(id, panel_Main.Width, panel_Main.Height, this);
 
                 panel_Main.Controls.Add(CurrentSubForm);
                 CurrentSubForm.Show();
@@ -57,50 +41,35 @@ namespace GameRetailerManagement.Source.Forms
             };
         }
 
-        private EventHandler ButtonEdit(int id,
-            string gameName,
-            object dataImage,
-            string description,
-            string price,
-            string releaseDate,
-            string developer,
-            string publisher)
-        {
-            return (s, e) =>
-            {
-                this.Hide();
-                Form_EditGame subForm = new Form_EditGame(id,
-                    gameName,
-                    dataImage,
-                    description,
-                    price,
-                    releaseDate,
-                    developer,
-                    publisher,
-                    this);
-                subForm.Show();
-                subForm.BringToFront();
-            };
-        }
-
-        public void InitGamesList(string criteria = "")
+        public void InitList(SubFormType formType, string criteria = "")
         {
             try
             {
-                flowLayoutPanel_GamesList.Controls.Clear();
-                var data = new QueryGRDB().ExcuteList("Select * from [dbo].[GAMES] order by [GAME_NAME]");
+                flowLayoutPanel_List.Controls.Clear();
+
+                var queryGames = "Select [GAME_ID] as [ID], " +
+                    "[GAME_NAME] as [NAME] " +
+                    "from [dbo].[GAMES] " +
+                    "order by [GAME_NAME];";
+
+                var queryBills = "Select [BILL_ID] as [ID]," +
+                    "('[' + convert(nvarchar(10), [BILL_CREATE_DATE], 103) + '] ' + [CUSTOMER_NAME]) as [NAME]" +
+                    "from [dbo].[BILLS]" +
+                    "order by [BILL_CREATE_DATE] desc";
+
+                var data = new QueryGRDB().ExcuteList(formType == SubFormType.Games ? queryGames : queryBills);
                 var posY = 0;
 
-                for (int i = 0; i < data["GAME_NAME"].Count; i++)
+                for (int i = 0; i < data["ID"].Count; i++)
                 {
-                    var gameName = data["GAME_NAME"][i].ToString();
-                    if (gameName.ToUpper().Contains(criteria.ToUpper()))
-                    {
-                        var dataImage = data["GAME_IMAGE"][i]; // Get the game image from the data
+                    var itemName = data["NAME"][i].ToString();
+                    var id = int.Parse(data["ID"][i].ToString());
 
+                    if (itemName.ToUpper().Contains(criteria.ToUpper()))
+                    {
                         var button = new Button
                         {
-                            Text = gameName,
+                            Text = itemName,
                             Location = new Point(0, 26 * posY),
                             Font = new Font("Cambria", 12, FontStyle.Bold),
                             Size = new Size(250, 26),
@@ -110,58 +79,64 @@ namespace GameRetailerManagement.Source.Forms
                             Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top,
                             ForeColor = Color.DarkBlue,
                         };
+
                         button.FlatAppearance.BorderSize = 0;
-                        button.SendToBack();
+                        button.BringToFront();
+                        button.Click += ButtonDetail(formType, id);
 
-                        Form_SpecificGame specificGameForm = new Form_SpecificGame(
-                            gameName,
-                            panel_Main.Width,
-                            panel_Main.Height,
-                            dataImage,
-                            data["GAME_DESCRIPTION"][i].ToString(),
-                            data["GAME_PRICE"][i].ToString(),
-                            data["GAME_RELEASE_DATE"][i].ToString(),
-                            data["GAME_DEVELOPER"][i].ToString(),
-                            data["GAME_PUBLISHER"][i].ToString(),
-                            ButtonEdit(int.Parse(data["GAME_ID"][i].ToString()),
-                            gameName,
-                            dataImage,
-                            data["GAME_DESCRIPTION"][i].ToString(),
-                            data["GAME_PRICE"][i].ToString(),
-                            data["GAME_RELEASE_DATE"][i].ToString().Substring(0, 10),
-                            data["GAME_DEVELOPER"][i].ToString(),
-                            data["GAME_PUBLISHER"][i].ToString()));
-
-                        button.Click += ButtonGame(int.Parse(data["GAME_ID"][i].ToString()),
-                            gameName,
-                            dataImage,
-                            data["GAME_DESCRIPTION"][i].ToString(),
-                            data["GAME_PRICE"][i].ToString(),
-                            data["GAME_RELEASE_DATE"][i].ToString().Substring(0, 10),
-                            data["GAME_DEVELOPER"][i].ToString(),
-                            data["GAME_PUBLISHER"][i].ToString());
-
-                        flowLayoutPanel_GamesList.Controls.Add(button);
+                        flowLayoutPanel_List.Controls.Add(button);
                         posY += 1;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void toolStripMenuItem_NewGame_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Hide();
+                var lastID = (decimal)new QueryGRDB().ExecuteScalar("SELECT MAX([GAME_ID]) FROM [dbo].[GAMES]");
+                Form_AddGame form_AddGame = new Form_AddGame(this);
+                form_AddGame.Show();
+                form_AddGame.BringToFront();
+            }
+            catch (Exception ex)
+            {
+                Show();
+                BringToFront();
+                MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void toolStripMenuItem_OpenGameList_Click(object sender, EventArgs e)
+        {
+            CurrentSubFormType = SubFormType.Games;
+            InitList(CurrentSubFormType);
+            textBox_Search.Focus();
+        }
+
+        private void toolStripMenuItem_OpenBillList_Click(object sender, EventArgs e)
+        {
+            CurrentSubFormType = SubFormType.Bills;
+            InitList(CurrentSubFormType);
+            textBox_Search.Focus();
         }
 
         private void textBox_Search_TextChanged(object sender, EventArgs e)
         {
-            InitGamesList(textBox_Search.Text);
+            InitList(CurrentSubFormType, textBox_Search.Text);
             textBox_Search.Focus();
         }
 
         private void button_Refresh_Click(object sender, EventArgs e)
         {
+            InitList(CurrentSubFormType);
             textBox_Search.Text = "";
-            InitGamesList();
             CurrentSubForm?.Close();
         }
 

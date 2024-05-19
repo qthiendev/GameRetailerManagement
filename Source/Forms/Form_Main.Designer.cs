@@ -32,16 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_NewGames = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_OpenGameList = new System.Windows.Forms.ToolStripMenuItem();
             this.billsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_OpenBillList = new System.Windows.Forms.ToolStripMenuItem();
             this.viewsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel_GamesList = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel_List = new System.Windows.Forms.FlowLayoutPanel();
             this.panel_Tools = new System.Windows.Forms.Panel();
             this.textBox_Search = new System.Windows.Forms.TextBox();
             this.button_Refresh = new System.Windows.Forms.Button();
@@ -77,30 +77,32 @@
             // gamesToolStripMenuItem
             // 
             this.gamesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.openToolStripMenuItem});
+            this.toolStripMenuItem_NewGames,
+            this.toolStripMenuItem_OpenGameList});
             this.gamesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gamesToolStripMenuItem.Name = "gamesToolStripMenuItem";
             this.gamesToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.gamesToolStripMenuItem.Text = "Games";
             // 
-            // newToolStripMenuItem
+            // toolStripMenuItem_NewGames
             // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.newToolStripMenuItem.Text = "New";
+            this.toolStripMenuItem_NewGames.Name = "toolStripMenuItem_NewGames";
+            this.toolStripMenuItem_NewGames.Size = new System.Drawing.Size(103, 22);
+            this.toolStripMenuItem_NewGames.Text = "New";
+            this.toolStripMenuItem_NewGames.Click += new System.EventHandler(this.toolStripMenuItem_NewGame_Click);
             // 
-            // openToolStripMenuItem
+            // toolStripMenuItem_OpenGameList
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.openToolStripMenuItem.Text = "Open";
+            this.toolStripMenuItem_OpenGameList.Name = "toolStripMenuItem_OpenGameList";
+            this.toolStripMenuItem_OpenGameList.Size = new System.Drawing.Size(103, 22);
+            this.toolStripMenuItem_OpenGameList.Text = "Open";
+            this.toolStripMenuItem_OpenGameList.Click += new System.EventHandler(this.toolStripMenuItem_OpenGameList_Click);
             // 
             // billsToolStripMenuItem
             // 
             this.billsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem1,
-            this.openToolStripMenuItem1});
+            this.toolStripMenuItem_OpenBillList});
             this.billsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.billsToolStripMenuItem.Name = "billsToolStripMenuItem";
             this.billsToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
@@ -109,14 +111,15 @@
             // newToolStripMenuItem1
             // 
             this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-            this.newToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.newToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem1.Text = "New";
             // 
-            // openToolStripMenuItem1
+            // toolStripMenuItem_OpenBillList
             // 
-            this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
-            this.openToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
-            this.openToolStripMenuItem1.Text = "Open";
+            this.toolStripMenuItem_OpenBillList.Name = "toolStripMenuItem_OpenBillList";
+            this.toolStripMenuItem_OpenBillList.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem_OpenBillList.Text = "Open";
+            this.toolStripMenuItem_OpenBillList.Click += new System.EventHandler(this.toolStripMenuItem_OpenBillList_Click);
             // 
             // viewsToolStripMenuItem
             // 
@@ -147,7 +150,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanel_GamesList);
+            this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanel_List);
             this.splitContainer1.Panel1.Controls.Add(this.panel_Tools);
             // 
             // splitContainer1.Panel2
@@ -157,20 +160,20 @@
             this.splitContainer1.SplitterDistance = 281;
             this.splitContainer1.TabIndex = 3;
             // 
-            // flowLayoutPanel_GamesList
+            // flowLayoutPanel_List
             // 
-            this.flowLayoutPanel_GamesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.flowLayoutPanel_List.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel_GamesList.AutoScroll = true;
-            this.flowLayoutPanel_GamesList.BackColor = System.Drawing.Color.Gainsboro;
-            this.flowLayoutPanel_GamesList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flowLayoutPanel_GamesList.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel_GamesList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flowLayoutPanel_GamesList.Location = new System.Drawing.Point(6, 32);
-            this.flowLayoutPanel_GamesList.Name = "flowLayoutPanel_GamesList";
-            this.flowLayoutPanel_GamesList.Size = new System.Drawing.Size(272, 530);
-            this.flowLayoutPanel_GamesList.TabIndex = 0;
+            this.flowLayoutPanel_List.AutoScroll = true;
+            this.flowLayoutPanel_List.BackColor = System.Drawing.Color.Gainsboro;
+            this.flowLayoutPanel_List.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flowLayoutPanel_List.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel_List.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.flowLayoutPanel_List.Location = new System.Drawing.Point(6, 32);
+            this.flowLayoutPanel_List.Name = "flowLayoutPanel_List";
+            this.flowLayoutPanel_List.Size = new System.Drawing.Size(272, 530);
+            this.flowLayoutPanel_List.TabIndex = 0;
             // 
             // panel_Tools
             // 
@@ -292,14 +295,14 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Datetime;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_NewGames;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_OpenGameList;
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.Panel panel_Main;
-        public System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_GamesList;
+        public System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_List;
         private System.Windows.Forms.Button button_Refresh;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_OpenBillList;
         private System.Windows.Forms.TextBox textBox_Search;
     }
 }

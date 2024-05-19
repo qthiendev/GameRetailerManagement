@@ -12,30 +12,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GameRetailerManagement.Source.Forms
+namespace GameRetailerManagement.Source.Forms.Games
 {
     public partial class Form_EditGame : Form
     {
         private readonly Form_Main _formMain;
-        private readonly int _id;
+        private readonly int _gameID;
 
-        public Form_EditGame(int id,
-            string gameName,
-            object dataImage,
-            string description,
-            string price,
-            string releaseDate,
-            string developer,
-            string publisher,
-            Form_Main main)
+        public Form_EditGame(int gameID, Form_Main main)
         {
             InitializeComponent();
-            _id = id;
-            Text = "Edit " + gameName;
-            textBox_GameName.Text = gameName;
-            if (dataImage != DBNull.Value)
+            _gameID = gameID;
+
+            var data = new QueryGRDB().ExcuteList($"select * from [dbo].[GAMES] where [GAME_ID] = {_gameID}");
+
+            Text = "Edit " + data["GAME_NAME"][0].ToString();
+
+            textBox_GameName.Text = data["GAME_NAME"][0].ToString();
+            if (data["GAME_IMAGE"][0] != DBNull.Value)
             {
-                var imageData = (byte[])dataImage;
+                var imageData = (byte[])data["GAME_IMAGE"][0];
                 using (MemoryStream ms = new MemoryStream(imageData))
                 {
                     pictureBox_Game.Image = Image.FromStream(ms);
@@ -44,13 +40,20 @@ namespace GameRetailerManagement.Source.Forms
             else
             {
                 pictureBox_Game.Image = Properties.Resources.DefaultImage;
+                ImageConverter converter = new ImageConverter();
+                byte[] imageBytes = (byte[])converter.ConvertTo(pictureBox_Game.Image, typeof(byte[]));
+                new QueryGRDB().ExecuteNonQuery(
+                    $"UPDATE [dbo].[GAMES] SET [GAME_IMAGE] = @image WHERE [GAME_ID] = @id",
+                    new SqlParameter("@image", imageBytes),
+                    new SqlParameter("@id", _gameID));
             }
+
             pictureBox_Game.SizeMode = PictureBoxSizeMode.Zoom;
-            textBox_Description.Text = description;
-            textBox_Price.Text = price;
-            textBox_ReleaseDate.Text = releaseDate;
-            textBox_Developer.Text = developer;
-            textBox_Publisher.Text = publisher;
+            textBox_Description.Text = data["GAME_DESCRIPTION"][0].ToString();
+            textBox_Price.Text = data["GAME_PRICE"][0].ToString();
+            textBox_ReleaseDate.Text = data["GAME_RELEASE_DATE"][0].ToString().Substring(0, 10);
+            textBox_Developer.Text = data["GAME_DEVELOPER"][0].ToString();
+            textBox_Publisher.Text = data["GAME_PUBLISHER"][0].ToString();
             _formMain = main;
         }
 
@@ -62,7 +65,7 @@ namespace GameRetailerManagement.Source.Forms
                 string sqlFormattedDate = releaseDate.ToString("yyyy-MM-dd");
 
                 // Execute the update query
-                Console.WriteLine(new QueryGRDB().ExecuteNonQuery(
+                if (new QueryGRDB().ExecuteNonQuery(
                     "UPDATE [dbo].[GAMES] SET GAME_NAME = @gameName, " +
                     "GAME_RELEASE_DATE = @releaseDate, " +
                     "GAME_DEVELOPER = @developer, " +
@@ -76,19 +79,20 @@ namespace GameRetailerManagement.Source.Forms
                     new SqlParameter("@publisher", textBox_Publisher.Text),
                     new SqlParameter("@price", textBox_Price.Text),
                     new SqlParameter("@description", textBox_Description.Text),
-                    new SqlParameter("@gameId", _id)
-                ));
+                    new SqlParameter("@gameId", _gameID)
+                ) <= 0)
+                    throw new Exception($"Cannot modify id:{_gameID}");
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
                 this.Close();
                 _formMain.Show();
                 _formMain.BringToFront();
-                _formMain.InitGamesList();
+                _formMain.InitList(_formMain.CurrentSubFormType);
             }
         }
 
@@ -109,6 +113,26 @@ namespace GameRetailerManagement.Source.Forms
         {
             _formMain.Show();
             _formMain.BringToFront();
+        }
+
+        private void pictureBox_Game_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files(*.JPG;*.GIF;*.PNG)|*.JPG;*.GIF;*.PNG";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    pictureBox_Game.Image = new Bitmap(openFileDialog.FileName);
+
+                    ImageConverter converter = new ImageConverter();
+                    byte[] imageBytes = (byte[])converter.ConvertTo(pictureBox_Game.Image, typeof(byte[]));
+
+                    new QueryGRDB().ExecuteNonQuery(
+                        $"UPDATE [dbo].[GAMES] SET [GAME_IMAGE] = @image WHERE [GAME_ID] = @id",
+                        new SqlParameter("@image", imageBytes),
+                        new SqlParameter("@id", _gameID));
+                }
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GameRetailerManagement.Source.Forms;
+using GameRetailerManagement.Source.Forms.Games;
 using System;
 using System.Collections.Generic;
 using System.Linq;

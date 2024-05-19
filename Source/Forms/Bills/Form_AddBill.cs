@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GameRetailerManagement.Source.Forms
+namespace GameRetailerManagement.Source.Forms.Bills
 {
-    public partial class Form_AddGame : Form
+    public partial class Form_AddBill : Form
     {
-        public Form_AddGame()
+        public Form_AddBill()
         {
             InitializeComponent();
         }

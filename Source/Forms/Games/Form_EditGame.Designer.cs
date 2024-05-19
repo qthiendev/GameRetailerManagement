@@ -1,4 +1,4 @@
-﻿namespace GameRetailerManagement.Source.Forms
+﻿namespace GameRetailerManagement.Source.Forms.Games
 {
     partial class Form_EditGame
     {
@@ -155,6 +155,7 @@
             this.pictureBox_Game.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_Game.TabIndex = 18;
             this.pictureBox_Game.TabStop = false;
+            this.pictureBox_Game.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox_Game_MouseDoubleClick);
             // 
             // textBox_GameName
             // 
@@ -163,7 +164,7 @@
             this.textBox_GameName.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_GameName.Location = new System.Drawing.Point(484, 9);
             this.textBox_GameName.Name = "textBox_GameName";
-            this.textBox_GameName.Size = new System.Drawing.Size(325, 30);
+            this.textBox_GameName.Size = new System.Drawing.Size(674, 30);
             this.textBox_GameName.TabIndex = 35;
             // 
             // textBox_ReleaseDate
@@ -173,7 +174,7 @@
             this.textBox_ReleaseDate.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_ReleaseDate.Location = new System.Drawing.Point(484, 44);
             this.textBox_ReleaseDate.Name = "textBox_ReleaseDate";
-            this.textBox_ReleaseDate.Size = new System.Drawing.Size(325, 30);
+            this.textBox_ReleaseDate.Size = new System.Drawing.Size(674, 30);
             this.textBox_ReleaseDate.TabIndex = 36;
             // 
             // textBox_Developer
@@ -183,7 +184,7 @@
             this.textBox_Developer.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Developer.Location = new System.Drawing.Point(484, 79);
             this.textBox_Developer.Name = "textBox_Developer";
-            this.textBox_Developer.Size = new System.Drawing.Size(325, 30);
+            this.textBox_Developer.Size = new System.Drawing.Size(674, 30);
             this.textBox_Developer.TabIndex = 37;
             // 
             // textBox_Publisher
@@ -193,7 +194,7 @@
             this.textBox_Publisher.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Publisher.Location = new System.Drawing.Point(484, 119);
             this.textBox_Publisher.Name = "textBox_Publisher";
-            this.textBox_Publisher.Size = new System.Drawing.Size(325, 30);
+            this.textBox_Publisher.Size = new System.Drawing.Size(674, 30);
             this.textBox_Publisher.TabIndex = 38;
             // 
             // textBox_Description
@@ -205,7 +206,7 @@
             this.textBox_Description.Location = new System.Drawing.Point(484, 155);
             this.textBox_Description.Multiline = true;
             this.textBox_Description.Name = "textBox_Description";
-            this.textBox_Description.Size = new System.Drawing.Size(325, 347);
+            this.textBox_Description.Size = new System.Drawing.Size(674, 478);
             this.textBox_Description.TabIndex = 39;
             // 
             // textBox_Price
@@ -231,7 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(821, 514);
+            this.ClientSize = new System.Drawing.Size(1170, 645);
             this.Controls.Add(this.textBox_Price);
             this.Controls.Add(this.textBox_Description);
             this.Controls.Add(this.textBox_Publisher);
