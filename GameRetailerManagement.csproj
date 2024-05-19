@@ -50,10 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameRetailerDBDataSet.Designer.cs">
+    <Compile Include="Dataset\GameRetailerDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GameRetailerDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\Authentication\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\Authentication\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Forms\Bills\Form_AddBill.cs">
       <SubType>Form</SubType>
@@ -128,15 +134,15 @@
     <EmbeddedResource Include="Source\Forms\Games\Form_SpecificGame.resx">
       <DependentUpon>Form_SpecificGame.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="GameRetailerDBDataSet.xsc">
+    <None Include="Dataset\GameRetailerDBDataSet.xsc">
       <DependentUpon>GameRetailerDBDataSet.xsd</DependentUpon>
     </None>
-    <None Include="GameRetailerDBDataSet.xsd">
+    <None Include="Dataset\GameRetailerDBDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>GameRetailerDBDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="GameRetailerDBDataSet.xss">
+    <None Include="Dataset\GameRetailerDBDataSet.xss">
       <DependentUpon>GameRetailerDBDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">

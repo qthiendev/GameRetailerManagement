@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace GameRetailerManagement {
+namespace GameRetailerManagement.Dataset {
     
     
     /// <summary>
@@ -1802,7 +1802,7 @@ namespace GameRetailerManagement {
         }
     }
 }
-namespace GameRetailerManagement.GameRetailerDBDataSetTableAdapters {
+namespace GameRetailerManagement.Dataset.GameRetailerDBDataSetTableAdapters {
     
     
     /// <summary>
