@@ -1,29 +1,41 @@
-﻿using GameRetailerManagement.Source.Utilities;
+﻿using GameRetailerManagement.Source.Forms.Main;
+using GameRetailerManagement.Source.Utilities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GameRetailerManagement.Source.Forms.Games
 {
     public partial class Form_EditGame : Form
     {
-        private readonly Form_Main _formMain;
+        private readonly Form_GameRetailer _formMain;
+        private readonly Form_SpecificGame _formGame;
         private readonly int _gameID;
 
-        public Form_EditGame(int gameID, Form_Main main)
+        public Form_EditGame(int gameID, Form_GameRetailer main, Form_SpecificGame formGame)
         {
             InitializeComponent();
-            _gameID = gameID;
 
+            _gameID = gameID;
+            _formMain = main;
+            _formGame = formGame;
+
+            LoadGame();
+        }
+
+        private void Form_EditGame_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _formMain.Show();
+            _formMain.BringToFront();
+            _formMain.CurrentSubFormType = Form_GameRetailer.SubFormType.Games;
+            _formMain.InitList();
+            _formMain.TriggerButtonDetail(_gameID);
+        }
+
+        private void LoadGame()
+        {
             var data = new QueryGRDB().ExcuteList($"select * from [dbo].[GAMES] where [GAME_ID] = {_gameID}");
 
             Text = "Edit " + data["GAME_NAME"][0].ToString();
@@ -51,18 +63,18 @@ namespace GameRetailerManagement.Source.Forms.Games
             pictureBox_Game.SizeMode = PictureBoxSizeMode.Zoom;
             textBox_Description.Text = data["GAME_DESCRIPTION"][0].ToString();
             textBox_Price.Text = data["GAME_PRICE"][0].ToString();
-            textBox_ReleaseDate.Text = data["GAME_RELEASE_DATE"][0].ToString().Substring(0, 10);
+            dateTimePicker_ReleaseDate.Value = DateTime.ParseExact(data["GAME_RELEASE_DATE"][0].ToString().Substring(0, 10),
+                "dd/MM/yyyy",
+                System.Globalization.CultureInfo.InvariantCulture);
             textBox_Developer.Text = data["GAME_DEVELOPER"][0].ToString();
             textBox_Publisher.Text = data["GAME_PUBLISHER"][0].ToString();
-            _formMain = main;
         }
 
         private void button_Confirm_Click(object sender, EventArgs e)
         {
             try
             {
-                DateTime releaseDate = DateTime.ParseExact(textBox_ReleaseDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                string sqlFormattedDate = releaseDate.ToString("yyyy-MM-dd");
+                var releaseDate = dateTimePicker_ReleaseDate.Value.ToString("yyyy-MM-dd");
 
                 // Execute the update query
                 if (new QueryGRDB().ExecuteNonQuery(
@@ -74,7 +86,7 @@ namespace GameRetailerManagement.Source.Forms.Games
                     "GAME_DESCRIPTION = @description " +
                     "WHERE GAME_ID = @gameId",
                     new SqlParameter("@gameName", textBox_GameName.Text),
-                    new SqlParameter("@releaseDate", sqlFormattedDate),
+                    new SqlParameter("@releaseDate", releaseDate),
                     new SqlParameter("@developer", textBox_Developer.Text),
                     new SqlParameter("@publisher", textBox_Publisher.Text),
                     new SqlParameter("@price", textBox_Price.Text),
@@ -82,37 +94,23 @@ namespace GameRetailerManagement.Source.Forms.Games
                     new SqlParameter("@gameId", _gameID)
                 ) <= 0)
                     throw new Exception($"Cannot modify id:{_gameID}");
+
+                Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            finally
-            {
-                this.Close();
-                _formMain.Show();
-                _formMain.BringToFront();
-                _formMain.InitList(_formMain.CurrentSubFormType);
-            }
         }
-
 
         private void button_Reset_Click(object sender, EventArgs e)
         {
-            Close();
+            LoadGame();
         }
 
         private void button_Back_Click(object sender, EventArgs e)
         {
             Close();
-            _formMain.Show();
-            _formMain.BringToFront();
-        }
-
-        private void Form_EditGame_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            _formMain.Show();
-            _formMain.BringToFront();
         }
 
         private void pictureBox_Game_MouseDoubleClick(object sender, MouseEventArgs e)

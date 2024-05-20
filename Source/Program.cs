@@ -1,5 +1,6 @@
 ﻿using GameRetailerManagement.Source.Forms;
 using GameRetailerManagement.Source.Forms.Games;
+using GameRetailerManagement.Source.Forms.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace GameRetailerManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Main());
+            Application.Run(new Form_Login());
         }
     }
 }

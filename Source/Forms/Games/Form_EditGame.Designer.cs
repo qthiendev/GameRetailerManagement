@@ -39,12 +39,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox_Game = new System.Windows.Forms.PictureBox();
             this.textBox_GameName = new System.Windows.Forms.TextBox();
-            this.textBox_ReleaseDate = new System.Windows.Forms.TextBox();
             this.textBox_Developer = new System.Windows.Forms.TextBox();
             this.textBox_Publisher = new System.Windows.Forms.TextBox();
             this.textBox_Description = new System.Windows.Forms.TextBox();
             this.textBox_Price = new System.Windows.Forms.TextBox();
             this.button_Back = new System.Windows.Forms.Button();
+            this.dateTimePicker_ReleaseDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Game)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,18 +164,8 @@
             this.textBox_GameName.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_GameName.Location = new System.Drawing.Point(484, 9);
             this.textBox_GameName.Name = "textBox_GameName";
-            this.textBox_GameName.Size = new System.Drawing.Size(674, 30);
+            this.textBox_GameName.Size = new System.Drawing.Size(673, 30);
             this.textBox_GameName.TabIndex = 35;
-            // 
-            // textBox_ReleaseDate
-            // 
-            this.textBox_ReleaseDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_ReleaseDate.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_ReleaseDate.Location = new System.Drawing.Point(484, 44);
-            this.textBox_ReleaseDate.Name = "textBox_ReleaseDate";
-            this.textBox_ReleaseDate.Size = new System.Drawing.Size(674, 30);
-            this.textBox_ReleaseDate.TabIndex = 36;
             // 
             // textBox_Developer
             // 
@@ -184,7 +174,7 @@
             this.textBox_Developer.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Developer.Location = new System.Drawing.Point(484, 79);
             this.textBox_Developer.Name = "textBox_Developer";
-            this.textBox_Developer.Size = new System.Drawing.Size(674, 30);
+            this.textBox_Developer.Size = new System.Drawing.Size(673, 30);
             this.textBox_Developer.TabIndex = 37;
             // 
             // textBox_Publisher
@@ -194,7 +184,7 @@
             this.textBox_Publisher.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Publisher.Location = new System.Drawing.Point(484, 119);
             this.textBox_Publisher.Name = "textBox_Publisher";
-            this.textBox_Publisher.Size = new System.Drawing.Size(674, 30);
+            this.textBox_Publisher.Size = new System.Drawing.Size(673, 30);
             this.textBox_Publisher.TabIndex = 38;
             // 
             // textBox_Description
@@ -206,7 +196,8 @@
             this.textBox_Description.Location = new System.Drawing.Point(484, 155);
             this.textBox_Description.Multiline = true;
             this.textBox_Description.Name = "textBox_Description";
-            this.textBox_Description.Size = new System.Drawing.Size(674, 478);
+            this.textBox_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_Description.Size = new System.Drawing.Size(673, 444);
             this.textBox_Description.TabIndex = 39;
             // 
             // textBox_Price
@@ -228,16 +219,27 @@
             this.button_Back.UseVisualStyleBackColor = true;
             this.button_Back.Click += new System.EventHandler(this.button_Back_Click);
             // 
+            // dateTimePicker_ReleaseDate
+            // 
+            this.dateTimePicker_ReleaseDate.CalendarFont = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker_ReleaseDate.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_ReleaseDate.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker_ReleaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker_ReleaseDate.Location = new System.Drawing.Point(484, 43);
+            this.dateTimePicker_ReleaseDate.Name = "dateTimePicker_ReleaseDate";
+            this.dateTimePicker_ReleaseDate.Size = new System.Drawing.Size(200, 30);
+            this.dateTimePicker_ReleaseDate.TabIndex = 41;
+            // 
             // Form_EditGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1170, 645);
+            this.ClientSize = new System.Drawing.Size(1169, 611);
+            this.Controls.Add(this.dateTimePicker_ReleaseDate);
             this.Controls.Add(this.textBox_Price);
             this.Controls.Add(this.textBox_Description);
             this.Controls.Add(this.textBox_Publisher);
             this.Controls.Add(this.textBox_Developer);
-            this.Controls.Add(this.textBox_ReleaseDate);
             this.Controls.Add(this.textBox_GameName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button_Back);
@@ -250,10 +252,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox_Game);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form_EditGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_EditGame";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_EditGame_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Game)).EndInit();
             this.ResumeLayout(false);
@@ -273,11 +275,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox_Game;
         private System.Windows.Forms.TextBox textBox_GameName;
-        private System.Windows.Forms.TextBox textBox_ReleaseDate;
         private System.Windows.Forms.TextBox textBox_Developer;
         private System.Windows.Forms.TextBox textBox_Publisher;
         private System.Windows.Forms.TextBox textBox_Description;
         private System.Windows.Forms.TextBox textBox_Price;
         private System.Windows.Forms.Button button_Back;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_ReleaseDate;
     }
 }

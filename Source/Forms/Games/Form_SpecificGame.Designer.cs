@@ -39,7 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label_Price = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button_CreateBill = new System.Windows.Forms.Button();
             this.button_Edit = new System.Windows.Forms.Button();
             this.button_Delete = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -164,36 +163,25 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Price: ";
             // 
-            // button_CreateBill
-            // 
-            this.button_CreateBill.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_CreateBill.Location = new System.Drawing.Point(90, 404);
-            this.button_CreateBill.Name = "button_CreateBill";
-            this.button_CreateBill.Size = new System.Drawing.Size(143, 35);
-            this.button_CreateBill.TabIndex = 13;
-            this.button_CreateBill.Text = "Create New Bill";
-            this.button_CreateBill.UseVisualStyleBackColor = true;
-            this.button_CreateBill.Click += new System.EventHandler(this.button_CreateBill_Click);
-            // 
             // button_Edit
             // 
             this.button_Edit.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Edit.Location = new System.Drawing.Point(90, 445);
+            this.button_Edit.Location = new System.Drawing.Point(90, 413);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(143, 35);
             this.button_Edit.TabIndex = 14;
-            this.button_Edit.Text = "Edit Product";
+            this.button_Edit.Text = "Edit";
             this.button_Edit.UseVisualStyleBackColor = true;
             this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
             // 
             // button_Delete
             // 
             this.button_Delete.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Delete.Location = new System.Drawing.Point(90, 486);
+            this.button_Delete.Location = new System.Drawing.Point(90, 454);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(143, 35);
             this.button_Delete.TabIndex = 15;
-            this.button_Delete.Text = "Delete Product";
+            this.button_Delete.Text = "Delete";
             this.button_Delete.UseVisualStyleBackColor = true;
             this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
             // 
@@ -246,7 +234,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button_Delete);
             this.Controls.Add(this.button_Edit);
-            this.Controls.Add(this.button_CreateBill);
             this.Controls.Add(this.label_Price);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
@@ -286,7 +273,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label_Price;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button_CreateBill;
         private System.Windows.Forms.Button button_Delete;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.Button button_Edit;

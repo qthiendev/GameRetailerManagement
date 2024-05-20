@@ -32,11 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label_CreatedDate = new System.Windows.Forms.Label();
-            this.listBox_Games = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label_TotalPayment = new System.Windows.Forms.Label();
             this.button_Delete = new System.Windows.Forms.Button();
             this.button_Edit = new System.Windows.Forms.Button();
+            this.panel_GameList = new System.Windows.Forms.Panel();
+            this.button_Export = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_CustomerName
@@ -81,19 +82,6 @@
             this.label_CreatedDate.TabIndex = 6;
             this.label_CreatedDate.Text = "[label_CreatedDate]";
             // 
-            // listBox_Games
-            // 
-            this.listBox_Games.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox_Games.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox_Games.FormattingEnabled = true;
-            this.listBox_Games.ItemHeight = 22;
-            this.listBox_Games.Location = new System.Drawing.Point(16, 135);
-            this.listBox_Games.Name = "listBox_Games";
-            this.listBox_Games.Size = new System.Drawing.Size(820, 312);
-            this.listBox_Games.TabIndex = 7;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -124,6 +112,7 @@
             this.button_Delete.TabIndex = 17;
             this.button_Delete.Text = "Delete Bill";
             this.button_Delete.UseVisualStyleBackColor = true;
+            this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
             // 
             // button_Edit
             // 
@@ -134,17 +123,42 @@
             this.button_Edit.TabIndex = 16;
             this.button_Edit.Text = "Edit Bill";
             this.button_Edit.UseVisualStyleBackColor = true;
+            this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
+            // 
+            // panel_GameList
+            // 
+            this.panel_GameList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_GameList.AutoScroll = true;
+            this.panel_GameList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel_GameList.Location = new System.Drawing.Point(16, 128);
+            this.panel_GameList.Name = "panel_GameList";
+            this.panel_GameList.Size = new System.Drawing.Size(820, 334);
+            this.panel_GameList.TabIndex = 39;
+            // 
+            // button_Export
+            // 
+            this.button_Export.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Export.Location = new System.Drawing.Point(608, 46);
+            this.button_Export.Name = "button_Export";
+            this.button_Export.Size = new System.Drawing.Size(143, 35);
+            this.button_Export.TabIndex = 40;
+            this.button_Export.Text = "Export";
+            this.button_Export.UseVisualStyleBackColor = true;
+            this.button_Export.Click += new System.EventHandler(this.button_Export_Click);
             // 
             // Form_SpecificBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 474);
+            this.Controls.Add(this.button_Export);
+            this.Controls.Add(this.panel_GameList);
             this.Controls.Add(this.button_Delete);
             this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.label_TotalPayment);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.listBox_Games);
             this.Controls.Add(this.label_CreatedDate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label_CustomerName);
@@ -163,10 +177,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label_CreatedDate;
-        private System.Windows.Forms.ListBox listBox_Games;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label_TotalPayment;
         private System.Windows.Forms.Button button_Delete;
         public System.Windows.Forms.Button button_Edit;
+        private System.Windows.Forms.Panel panel_GameList;
+        private System.Windows.Forms.Button button_Export;
     }
 }

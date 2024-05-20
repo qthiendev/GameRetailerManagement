@@ -55,12 +55,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GameRetailerDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\Authentication\Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Source\Forms\Authentication\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
     <Compile Include="Source\Forms\Bills\Form_AddBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +66,12 @@
     </Compile>
     <Compile Include="Source\Forms\Bills\Form_EditBill.Designer.cs">
       <DependentUpon>Form_EditBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\Bills\Form_ExportBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\Bills\Form_ExportBill.Designer.cs">
+      <DependentUpon>Form_ExportBill.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Forms\Bills\Form_SpecificBill.cs">
       <SubType>Form</SubType>
@@ -91,17 +91,29 @@
     <Compile Include="Source\Forms\Games\Form_EditGame.Designer.cs">
       <DependentUpon>Form_EditGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\Form_Main.cs">
+    <Compile Include="Source\Forms\Main\Form_GameRetailer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\Form_Main.Designer.cs">
-      <DependentUpon>Form_Main.cs</DependentUpon>
+    <Compile Include="Source\Forms\Main\Form_GameRetailer.Designer.cs">
+      <DependentUpon>Form_GameRetailer.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Forms\Games\Form_SpecificGame.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Source\Forms\Games\Form_SpecificGame.Designer.cs">
       <DependentUpon>Form_SpecificGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\Main\Form_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\Main\Form_Login.Designer.cs">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\Reports\Form_TotalEarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\Reports\Form_TotalEarning.Designer.cs">
+      <DependentUpon>Form_TotalEarning.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,8 +128,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Source\Forms\Bills\Form_AddBill.resx">
+      <DependentUpon>Form_AddBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\Bills\Form_EditBill.resx">
       <DependentUpon>Form_EditBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\Bills\Form_ExportBill.resx">
+      <DependentUpon>Form_ExportBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\Bills\Form_SpecificBill.resx">
       <DependentUpon>Form_SpecificBill.cs</DependentUpon>
@@ -128,11 +146,17 @@
     <EmbeddedResource Include="Source\Forms\Games\Form_EditGame.resx">
       <DependentUpon>Form_EditGame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\Form_Main.resx">
-      <DependentUpon>Form_Main.cs</DependentUpon>
+    <EmbeddedResource Include="Source\Forms\Main\Form_GameRetailer.resx">
+      <DependentUpon>Form_GameRetailer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\Games\Form_SpecificGame.resx">
       <DependentUpon>Form_SpecificGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\Main\Form_Login.resx">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\Reports\Form_TotalEarning.resx">
+      <DependentUpon>Form_TotalEarning.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Dataset\GameRetailerDBDataSet.xsc">
       <DependentUpon>GameRetailerDBDataSet.xsd</DependentUpon>

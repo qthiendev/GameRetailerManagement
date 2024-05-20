@@ -1,4 +1,5 @@
-﻿using GameRetailerManagement.Source.Utilities;
+﻿using GameRetailerManagement.Source.Forms.Main;
+using GameRetailerManagement.Source.Utilities;
 using System;
 using System.Drawing;
 using System.IO;
@@ -8,18 +9,16 @@ namespace GameRetailerManagement.Source.Forms.Games
 {
     public partial class Form_SpecificGame : Form
     {
-        private int _gameID;
-        private Form_Main _formMain;
+        private readonly int _gameID;
+        private readonly Form_GameRetailer _formMain;
         public Form_SpecificGame(int gameID,
             int width,
             int height,
-            Form_Main _main)
+            Form_GameRetailer _main)
         {
             InitializeComponent();
             _gameID = gameID;
             _formMain = _main;
-
-            var data = new QueryGRDB().ExcuteList($"select * from [dbo].[GAMES] where [GAME_ID] = {_gameID}");
 
             TopLevel = false;
             Visible = true;
@@ -28,9 +27,13 @@ namespace GameRetailerManagement.Source.Forms.Games
             Width = width;
             Height = height;
             Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            Text = data["GAME_NAME"][0].ToString();
-            label_GameName.Text = data["GAME_NAME"][0].ToString();
 
+            LoadGame();
+        }
+
+        public void LoadGame()
+        {
+            var data = new QueryGRDB().ExcuteList($"select * from [dbo].[GAMES] where [GAME_ID] = {_gameID}");
 
             if (data["GAME_IMAGE"][0] != DBNull.Value)
             {
@@ -43,24 +46,22 @@ namespace GameRetailerManagement.Source.Forms.Games
 
             pictureBox_Game.SizeMode = PictureBoxSizeMode.Zoom;
 
-            textBox_Description.Text = data["GAME_DESCRIPTION"][0].ToString();
-            label_Price.Text = data["GAME_PRICE"][0].ToString();
-            label_ReleaseDate.Text = data["GAME_RELEASE_DATE"][0].ToString().Substring(0, 10);
-            label_Developer.Text = data["GAME_DEVELOPER"][0].ToString();
-            label_Publisher.Text = data["GAME_PUBLISHER"][0].ToString();
-        }
+            textBox_Description.Text = data["GAME_DESCRIPTION"][0]?.ToString();
+            label_Price.Text = data["GAME_PRICE"][0]?.ToString();
+            label_ReleaseDate.Text = data["GAME_RELEASE_DATE"][0]?.ToString()?.Substring(0, 10);
+            label_Developer.Text = data["GAME_DEVELOPER"][0]?.ToString();
+            label_Publisher.Text = data["GAME_PUBLISHER"][0]?.ToString();
+            label_GameName.Text = data["GAME_NAME"][0]?.ToString();
 
-        private void button_CreateBill_Click(object sender, EventArgs e)
-        {
-
+            Text = data["GAME_NAME"][0]?.ToString();
         }
 
         private void button_Edit_Click(object sender, EventArgs e)
         {
             try
             {
-                _formMain.Hide();
-                Form_EditGame editForm = new Form_EditGame(_gameID, _formMain);
+                //_formMain.Hide();
+                Form_EditGame editForm = new Form_EditGame(_gameID, _formMain, this);
                 editForm.Show();
                 editForm.BringToFront();
             }
@@ -74,11 +75,18 @@ namespace GameRetailerManagement.Source.Forms.Games
         {
             try
             {
-                if (new QueryGRDB().ExecuteNonQuery($"delete from [dbo].[Games] where GAME_ID = {_gameID}") <= 0)
-                    throw new Exception("Cannot delete Product!");
+                var gameName = new QueryGRDB().ExecuteScalar($"select [GAME_NAME] from [dbo].[GAMES] where [GAME_ID] = {_gameID}").ToString();
+                var dialogResult = MessageBox.Show($"Are you sure want to delete '{gameName}'!", "ALERT", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    new QueryGRDB().ExecuteNonQuery($"delete from [GAME_BILL] where [GAME_ID] = {_gameID}");
 
-                Close();
-                _formMain.InitList(_formMain.CurrentSubFormType);
+                    if (new QueryGRDB().ExecuteNonQuery($"delete from [dbo].[Games] where GAME_ID = {_gameID}") <= 0)
+                        throw new Exception($"Cannot delete {gameName}!");
+
+                    Close();
+                    _formMain.InitList();
+                }
             }
             catch (Exception ex)
             {
