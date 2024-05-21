@@ -71,6 +71,7 @@
             this.textBox_Password.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Password.Location = new System.Drawing.Point(141, 169);
             this.textBox_Password.Name = "textBox_Password";
+            this.textBox_Password.PasswordChar = '*';
             this.textBox_Password.Size = new System.Drawing.Size(204, 30);
             this.textBox_Password.TabIndex = 9;
             // 
