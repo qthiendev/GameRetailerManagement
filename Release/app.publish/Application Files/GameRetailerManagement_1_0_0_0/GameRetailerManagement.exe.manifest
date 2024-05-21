@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="GameRetailerManagement.exe" version="1.0.0.0" publicKeyToken="1aad958caa1559e6" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="GameRetailerManagement" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="GameRetailerManagement.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GameRetailerManagement.exe" size="11025880">
+      <assemblyIdentity name="GameRetailerManagement" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>HSxkNdQoaIW+KdB7ee/8P1WmADRpCQjA6fx4uvqD0kY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="GameRetailerManagement.exe.config" size="575">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>WLCc7I/tW72L5YkrNDZlvrm8XtY4oajzlYzC8d5f7n4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\81mftTR-ZBL._AC_UF1000,1000_QL80_.jpg" size="97818">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>H3yM8DWaAdLobjRHJeHHrO5AepXpQ7ZAqnuQ8s1r2pM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\Among_Us_cover_art.jpg" size="63506">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>zRkJhPB18S9xdhwabZwpCmXSLriIBZiayPvEmWYy4i4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\Celeste_box_art_full.png" size="1048517">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R7T+IDnUEOqNZhvlQfe3zyzHqoU3aSubBhWwbzCkhxg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\Doom_cover_art.jpg" size="39178">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>RKNKLkk0szJti2b8qv6n5ykeKrftUaa7s6LAtkwji4o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\download.jpg" size="3544">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xzPGTgYMzh/S0K9hJjP61E44IClTm6yd9CrMlY7/Z/w=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\EGS_TUNIC_ISOMETRICORPGamesLtd_S2_1200x1600-a3686b673e7a78a0e5bd33f7cecd598e.jpg" size="994923">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>wbT80Xzkuhir253gJEqIHFr65WdlmngIScSuhJKsT/U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\Grand_Theft_Auto_V.png" size="183171">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>a0wxGIfXnx8XUsXN0zCCtgxQ6b8NmmhJXo3KDy4h1Ok=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\images.jpg" size="10859">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>3X9TmGACbPDaaxiwwnBoHPi9NQeSQLLoyrJOk4XpvU0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\Official_cover_art_for_Bioshock_Infinite.jpg" size="61635">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>2dTprkdDtI9N1klnixlB5wfADD1ye7eB7JaEgtydJfI=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-53ZIE\bangc" issuerKeyHash="52fabec56e7dfd7fd2e92b080dc27bf08f6a83e7" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>AaED8RvTeoL45YSRos4MTxpJYkF8lRFSoNerS6icKkA=</DigestValue></Reference></SignedInfo><SignatureValue>DcXXoUy4TStSJLTcavkzCV4oFrGBSeSpnXZcr/W4mJqeUaIXx4GWevYzY63XVwqN3mD9yDyK9QQiCeaJidHCITAOVf7lh+FbRBOunw+aHbxmEpBSnEAy0uoXwr16IKFFe4ZNH49sert7Zkub5O+qEx0S6+m7aXkfV4+WZ3YpjdA=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>rdJdYVWJ2vvcBF6nXiQlEEhWniQRzYVAr+U82wvI27qVRAoBCESyR28JDaWynEnZGCr8hVJKJh9ZnFcePUe5vwmO6soJsTlR6uAZUoa3jEg4RpN1tJiGRmcFQjCGS99juIEq+I1dHU+yIbaXMnsrF3rmxKfnpNk4jWwZDzTkQ60=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="402a9ca84babd7a05211957c4162491a4f0ccea29184e5f8827ad31bf103a101" Description="" Url=""><as:assemblyIdentity name="GameRetailerManagement.exe" version="1.0.0.0" publicKeyToken="1aad958caa1559e6" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-53ZIE\bangc</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>P3QgA2L9jxemJsZW3Ph6MeX9HUiL4thBzu+pdpBtavs=</DigestValue></Reference></SignedInfo><SignatureValue>ljlqSFaXIhS5r84Olf2RtdVygKaQMP8nD+DLRLRJB694LkNkMGCehi3vooJRvVFM5SfBKi/xl0a3pTmZQnfgYS7EJQk3cKOawI/sPqHm/9aGrYFqOpt7LJVTziniHSjOEk3VnIO0XJpPKs97ge/UuobYGlAILdVz1bvJAAdC29s=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>rdJdYVWJ2vvcBF6nXiQlEEhWniQRzYVAr+U82wvI27qVRAoBCESyR28JDaWynEnZGCr8hVJKJh9ZnFcePUe5vwmO6soJsTlR6uAZUoa3jEg4RpN1tJiGRmcFQjCGS99juIEq+I1dHU+yIbaXMnsrF3rmxKfnpNk4jWwZDzTkQ60=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB5TCCAU6gAwIBAgIQUySddwiq8ohC8eB35CJEyjANBgkqhkiG9w0BAQsFADAxMS8wLQYDVQQDHiYARABFAFMASwBUAE8AUAAtADUAMwBaAEkARQBcAGIAYQBuAGcAYzAeFw0yNDA1MjEwNjExNTlaFw0yNTA1MjExMjExNTlaMDExLzAtBgNVBAMeJgBEAEUAUwBLAFQATwBQAC0ANQAzAFoASQBFAFwAYgBhAG4AZwBjMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCt0l1hVYna+9wEXqdeJCUQSFaeJBHNhUCv5TzbC8jbupVECgEIRLJHbwkNpbKcSdkYKvyFUkomH1mcVx49R7m/CY7qygmxOVHq4BlShreMSDhGk3W0mIZGZwVCMIZL32O4gSr4jV0dT7IhtpcyeysXeubEp+ek2TiNbBkPNORDrQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAJt80gVMxn/YsRF+8MWY41HUJsH2tBAVMsGW6cBcBNlJQqiWeU8nSPFwMiY3BZrPmk1PRHCvU4dfvSq8VvU3isihmF82pJ8BqNNyNsT8YwGWVjy/Vm/6yQI4hRPYpOBdk2/lqbGlF4uiICBdb1PQYW5yoajjNLT9tPOp2SKTqLip</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
